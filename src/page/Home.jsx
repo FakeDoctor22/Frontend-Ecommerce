@@ -52,11 +52,10 @@ const Home = () => {
             fresh vegetables at your fingertips. Experience the goodness of
             Pawfect Chew Delivery today!
           </p>
-          <Link to={"menu/64a2c1dc1cbc8ea6ff7eb726"}>
+          
             <button className="font-bold bg-green-500 text-slate-200 px-4 py-2 rounded-md">
               Order Now
             </button>
-          </Link>
         </div>
 
         <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
