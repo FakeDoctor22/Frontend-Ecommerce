@@ -46,14 +46,14 @@ function Signup() {
       };
     });
   };
-  console.log("http://localhost:8080/");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { firstName, email, password, confirmPassword } = data;
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
         const fetchData = await fetch(
-          `http://localhost:8080/signup`,
+          `https://pawfectchewdeliveryapp.onrender.com/signup`,
           {
             method: "POST",
             headers: {
