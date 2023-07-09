@@ -7,7 +7,6 @@ import FilterProduct from "../component/FilterProduct";
 import AllProduct from "../component/AllProduct";
 import { Link } from "react-router-dom";
 
-
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
   const homeProductCartList = productData.slice(1, 5);
@@ -26,9 +25,6 @@ const Home = () => {
     slideProductRef.current.scrollLeft -= 200;
   };
 
-
-
-
   return (
     <div className="p-2 md:p-4">
       <div className="md:flex gap-4 py-2">
@@ -42,19 +38,24 @@ const Home = () => {
           </div>
           <h2 className="text-4xl md:text-7xl font-bold py-3">
             <span className="text-green-600">So</span> Fast<br></br>{" "}
-            <span>So <span className="text-green-600">Go</span>od</span>
+            <span>
+              So <span className="text-green-600">Go</span>od
+            </span>
           </h2>
-          <p className="py-3 text-base ">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries
+          <p className="py-3 text-base font-bold">
+            <span className="text-green-600">So</span> Fast So{" "}
+            <span className="text-green-600">Go</span>od! Pawfect Chew Delivery
+            brings you a wide selection of farm-fresh vegetables delivered right
+            to your doorstep. We are dedicated to providing the highest quality
+            produce sourced directly from local farms. With our reliable and
+            efficient delivery service, you can enjoy the convenience of having
+            fresh vegetables at your fingertips. Experience the goodness of
+            Pawfect Chew Delivery today!
           </p>
           <Link to={"menu/64a2c1dc1cbc8ea6ff7eb726"}>
-          <button className="font-bold bg-green-500 text-slate-200 px-4 py-2 rounded-md">
-            Order Now
-          </button>
+            <button className="font-bold bg-green-500 text-slate-200 px-4 py-2 rounded-md">
+              Order Now
+            </button>
           </Link>
         </div>
 
@@ -73,7 +74,9 @@ const Home = () => {
                 );
               })
             : loadingArray.map((el, index) => {
-                return <HomeCard key={index+"loading"} loading={"Loading..."} />;
+                return (
+                  <HomeCard key={index + "loading"} loading={"Loading..."} />
+                );
               })}
         </div>
       </div>
@@ -106,7 +109,7 @@ const Home = () => {
             ? homeProductCartListVegetables.map((el) => {
                 return (
                   <CardFeature
-                    key={el._id+"vegetable"}
+                    key={el._id + "vegetable"}
                     id={el._id}
                     name={el.name}
                     category={el.category}
@@ -115,13 +118,13 @@ const Home = () => {
                   />
                 );
               })
-            : loadingArrayFeature.map((el,index) => (
-                <CardFeature loading="Loading..." key={index+"cartLoading"} />
+            : loadingArrayFeature.map((el, index) => (
+                <CardFeature loading="Loading..." key={index + "cartLoading"} />
               ))}
         </div>
       </div>
-      
-      <AllProduct heading={"Your Product"}/>
+
+      <AllProduct heading={"Your Product"} />
     </div>
   );
 };
