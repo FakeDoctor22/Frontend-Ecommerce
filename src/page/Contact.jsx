@@ -1,60 +1,69 @@
-import React from 'react'
-import { useFormAction } from 'react-router-dom';
-import { MdOutlineEmail } from 'react-icons/md';
-import { MdPhoneInTalk } from 'react-icons/md';
-
-
-const {
-  control,
-  handleSubmit,
-  formState:{errors}, 
-} = useFormAction ({
-  defaultValues: {
-    name:  '',
-    email: '',
-    message: '',
-  }
-})
+import React from 'react';
 
 const Contact = () => {
-  return (
-    <div className="x1:container mx-auto mb-32">
-      <div
-        className="flex justify-center"
-        style={{
-          background: 'gradient-to-bl from-yellow-200 via-emerald-600 to-teal-300',
-          height: '250px',
-        }}
-    >
-        <h1 className="text-5x1 sm:text-7x1 text-white uppercase pt-12">Contact us</h1>
-    </div>
-    <div className="px-4 sm:w-2/3 1g:w-1/2 mx-auto">
-      <div className="rounded-1g shadow-1g bg-white -mt-24 py-10 md:py-12 px-4 md:px-6"></div>
-        <div className="grid grid-cols-2 gap-x-6 mb-12 mx-auto">
-        <MdOutlineEmail icon={<MdOutlineEmail />} text="EMAIL@gmail.com" />
-        <MdPhoneInTalk Icon={<MdOutlineEmail />} text="09709187375" />
-        </div>
-        <div>
-          <form>
-            <controller
-                name="name"
-                control={control}
-                rules={{required: true}}
-                render={({field}) => (
-                  <FormElement 
-                  type="text" 
-                  label="name" 
-                  placeholder="Enter name here..." 
-                  fieldRef={field} 
-                  hasError={errors.name?.type ==='required'}
-            />
-          )}
-        />
-          </form>
-        </div>
-    </div>
-  </div>
-  );
-}
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbwCFw4aLxm3l7igCBfUNOPGn78LxbhwFghEK2UiB4eTpFwNkOQm92nYE-lpdv5y3C2p/exec";
 
-export default Contact
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const msg = form.querySelector("#msg");
+    
+      fetch(scriptURL, { method: "POST", body: new FormData(form) })
+        .then((response) => {
+          if (msg) {
+            msg.innerHTML = "Message Sent";
+            setTimeout(function () {
+              msg.innerHTML = "";
+            }, 3000);
+          }
+          form.reset();
+        })
+        .catch((error) => console.error("Error!", error.message));
+    };    
+
+  return (
+    <div id="contact">
+      <div className="container">
+        <div className="row">
+          <div className="contact-left">
+            <h1 className="sub-title">Contact us</h1>
+            <p>
+              <i className="fas fa-paper-plane"></i>pawfectchewdelivery@gmail.com
+            </p>
+            <div className="social-icon">
+              <a href="https://web.facebook.com/boboloko123">
+                <i className="fa-brands fa-facebook"></i>
+              </a>
+              <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">
+                <i className="">
+                  <i className="fa-regular fa-envelope"></i>
+                </i>
+              </a>
+              <a href="https://www.linkedin.com/in/webster-bisoles-b40563266/">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/wbisoles1214">
+                <i className="fa-brands fa-github"></i>
+              </a>
+            </div>
+            <div className="container"></div>
+          </div>
+          <div className="contact-right">
+            <form name="submit-to-google-sheet" onSubmit={handleSubmit}>
+              <input type="text" name="Name" placeholder="Your Name" required />
+              <input type="email" name="Email" placeholder="Your Email" required />
+              <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+              <button type="submit" className="btn btn2">
+                Submit
+              </button>
+            </form>
+            <span id="msg"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;
