@@ -43,7 +43,7 @@ const Newproduct = () => {
 
     if (name && image && category && price) {
       const fetchData = await fetch(
-        `http://localhost:8080/uploadProduct`,
+        `https://pawfectchewdeliveryapp.onrender.com/uploadProduct`,
         {
           method: "POST",
           headers: {
