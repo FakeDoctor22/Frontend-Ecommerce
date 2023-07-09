@@ -34,7 +34,7 @@ const Header = () => {
 
         <div className="flex items-center gap-4 md:gap-7">
           <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
-            <Link to={""}>Home</Link>
+            <Link to={""}>Fruits & Vegetables Lists</Link>
             <Link to={"contact"}>Contact</Link>
           </nav>
           <div className="text-2xl text-slate-600 relative">
@@ -81,7 +81,7 @@ const Header = () => {
                 )}
                 <nav className="text-base md:text-lg flex flex-col md:hidden">
                   <Link to={""} className="px-2 py-1">
-                    Home
+                    Fruits & Vegetables Lists
                   </Link>
                   <Link to={"about"} className="px-2 py-1">
                     About
