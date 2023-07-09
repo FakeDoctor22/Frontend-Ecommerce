@@ -4,6 +4,7 @@ import emptyCartImage from "../assets/empty.gif";
 import { toast } from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { useNavigate } from "react-router-dom";
+import { configDotenv } from "dotenv";
 
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
@@ -22,7 +23,7 @@ const Cart = () => {
   const handlePayment = async () => {
     if (user.email) {
       const stripePromise = await loadStripe(
-        process.env.REACT_APP_STRIPE_PUBLIC_KEY
+        "pk_test_51NQUOnLxVG3Ehu4hM3O9nGz7IjMrG9EOzahi4C2EjKBGZD202E1iT7O4pCD51y8cgUP6FgMx8CrUEUJN80PoP0Z800l0LMwW6j"
       );
       const res = await fetch(
         `https://pawfectchewdeliveryapp.onrender.com/create-checkout-session`,
